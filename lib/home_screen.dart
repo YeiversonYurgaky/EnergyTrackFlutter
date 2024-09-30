@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:namer_app/classroom_card.dart';
-// Asegúrate de importar el DashboardScreen
+import 'classroom_card.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -36,35 +35,41 @@ class HomeScreen extends StatelessWidget {
           'https://app.powerbi.com/view?r=eyJrIjoiZTdiZjkzNGQtZWQ0OC00N2ExLWJhMmItMzFkNzZmMjc3ZWJjIiwidCI6IjRkZDEzM2ZkLWNhMmEtNDA5OC1hZTkxLTBlYWEwYzU4MjNiOCIsImMiOjR9',
     };
 
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              'Visualiza los consumos de las iluminarias a tiempo real:',
-              style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-                color: Colors.blue.shade800,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('EnergyTrack'),
+        titleTextStyle: TextStyle(
+            color: Colors.blue, fontSize: 30, fontWeight: FontWeight.bold),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                'Visualiza los consumos de las iluminarias a tiempo real:',
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue.shade800,
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
             ),
-          ),
-          GridView.count(
-            crossAxisCount: 2,
-            padding: EdgeInsets.all(16.0),
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            children: List.generate(classroomNames.length, (index) {
-              return ClassroomCard(
-                classroomName: classroomNames[index],
-                powerBiUrl: powerBiUrls[classroomNames[index]] ??
-                    '', // Pasamos la URL correcta
-              );
-            }),
-          ),
-        ],
+            GridView.count(
+              crossAxisCount: 2,
+              padding: EdgeInsets.all(16.0),
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              children: List.generate(classroomNames.length, (index) {
+                return ClassroomCard(
+                  classroomName: classroomNames[index],
+                  powerBiUrl: powerBiUrls[classroomNames[index]] ?? '',
+                );
+              }),
+            ),
+          ],
+        ),
       ),
     );
   }

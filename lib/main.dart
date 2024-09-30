@@ -1,6 +1,6 @@
-// main.dart
 import 'package:flutter/material.dart';
-import 'main_screen.dart';
+import 'home_screen.dart';
+import 'welcome_screen.dart'; // Si tienes una pantalla de bienvenida
 
 void main() {
   runApp(EnergyTrackApp());
@@ -26,7 +26,8 @@ class EnergyTrackApp extends StatelessWidget {
           centerTitle: true,
         ),
       ),
-      home: MainScreen(),
+      home:
+          WelcomeScreen(), // O WelcomeScreen si tienes la pantalla de bienvenida
     );
   }
 }
