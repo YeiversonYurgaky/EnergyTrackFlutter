@@ -1,11 +1,11 @@
-// classroom_card.dart
 import 'package:flutter/material.dart';
-import 'dashboard_screen.dart';
+import 'dashboard_screen.dart'; // Asegúrate de importar el DashboardScreen
 
 class ClassroomCard extends StatelessWidget {
   final String classroomName;
+  final String powerBiUrl; // Nueva propiedad para la URL
 
-  ClassroomCard({required this.classroomName});
+  ClassroomCard({required this.classroomName, required this.powerBiUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +25,14 @@ class ClassroomCard extends StatelessWidget {
       margin: EdgeInsets.all(10),
       child: InkWell(
         onTap: () {
+          // Navega a DashboardScreen pasando la URL correspondiente
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => DashboardScreen(classroomName: classroomName),
+              builder: (context) => DashboardScreen(
+                classroomName: classroomName,
+                powerBiUrl: powerBiUrl, // Pasamos la URL correspondiente
+              ),
             ),
           );
         },
